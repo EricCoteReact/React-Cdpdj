@@ -2,6 +2,4 @@
 
 Project for **React Academy**, 2021
 
-"resolutions": {
-"reactstrap/react-transition-group": "^4.4.1"
-},
+//remove line warnings in contxt and drilling

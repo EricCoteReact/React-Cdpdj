@@ -39,6 +39,11 @@ export default function Menu() {
               </NavLink>
             </NavItem>
             <NavItem>
+              <NavLink tag={RRNavLink} to='/lifecycle'>
+                Lifecycle
+              </NavLink>
+            </NavItem>
+            <NavItem>
               <NavLink tag={RRNavLink} to='/about'>
                 About
               </NavLink>

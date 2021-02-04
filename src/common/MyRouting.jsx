@@ -34,8 +34,10 @@ import SignIn from '../security/SignIn';
 import Profile from '../security/Profile';
 import PasswordReset from '../security/PasswordReset';
 import SignOff from '../security/SignOff';
+import Lifecycle from '../lifecycle';
 
 import About from '../about';
+
 //const About = React.lazy(() => import('./about'));
 
 export default function MyRouting({ location }) {
@@ -61,6 +63,7 @@ export default function MyRouting({ location }) {
           path='/counter/hooks-v3'
           render={() => <HooksCounterV3 init={5} />}
         />
+        <Route path='/lifecycle' component={Lifecycle} />
         <Route path='/data/covid' component={Covid} />
         <Route path='/data/hooks' component={ContactsHooks} />
         <Route path='/data/class' component={ContactsClass} />
