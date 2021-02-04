@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactApi from '../contact-api/ContactApi';
+import ContactApi from '../contact-api/ContactApi2';
 import ContactForm from './ContactForm';
 
 export default function ContactDetails(props) {
@@ -51,8 +51,16 @@ export default function ContactDetails(props) {
       formErrors.firstName = `First name needs three letters or more (${state.firstName})`;
     }
 
+    if (state.firstName.length > 20) {
+      formErrors.firstName = `First name needs less than 21 chars (${state.firstName})`;
+    }
+
     if (state.lastName.length < 3) {
       formErrors.lastName = 'Last name needs three letters or more';
+    }
+
+    if (state.firstName.length + state.lastName.length > 25) {
+      formErrors.global = 'The full name is too long';
     }
 
     if (!isEquivalent(state.formErrors, formErrors)) {
@@ -62,6 +70,11 @@ export default function ContactDetails(props) {
     return Object.keys(formErrors).length === 0;
   }
 
+  async function deleteContact() {
+    await ContactApi.deleteContact(state.id);
+    props.history.push('/data/hooks');
+  }
+
   return (
     <>
       <h1>
@@ -69,7 +82,12 @@ export default function ContactDetails(props) {
           ? `Contact ${state.firstName} ${state.lastName} `
           : 'Create Contact'}
       </h1>
-      <ContactForm {...state} onChange={change} onSubmit={submit} />
+      <ContactForm
+        {...state}
+        onChange={change}
+        onSubmit={submit}
+        onDeleteContact={deleteContact}
+      />
     </>
   );
 }

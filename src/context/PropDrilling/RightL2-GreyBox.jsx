@@ -13,6 +13,7 @@ export default function GreyBox(props) {
       <h1>Modify State (props)</h1>
       <ModifyData
         firstName={props.firstName}
+        lastName={props.lastName}
         color={props.color}
         onChange={props.onChange}
       />

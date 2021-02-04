@@ -11,7 +11,11 @@ export default function BlueBox(props) {
         padding: '5px 20px',
       }}
     >
-      <DisplayData firstName={props.firstName} color={props.color} />
+      <DisplayData
+        firstName={props.firstName}
+        lastName={props.lastName}
+        color={props.color}
+      />
     </div>
   );
 }

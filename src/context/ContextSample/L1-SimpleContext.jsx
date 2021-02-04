@@ -5,13 +5,14 @@ import { Row, Col } from 'reactstrap';
 import MyContext from './MyContext';
 
 export default function SimpleContext() {
+  // eslint-disable-next-line
   const [firstName, setFirstName] = useState('John');
+  // eslint-disable-next-line
+  const [lastName, setLastName] = useState('Wayne');
+  // eslint-disable-next-line
   const [color, setColor] = useState('blue');
-
-  //the folloing is to avoid the ESLint warning that
-  //we're not calling the "set" methods.
-  if ((setFirstName, setColor)) {
-  }
+  // eslint-disable-next-line
+  const [lastNameColor, setLastNameColor] = useState('red');
 
   function change(evt) {
     const { name, value } = evt.target;
@@ -24,7 +25,9 @@ export default function SimpleContext() {
   }
 
   return (
-    <MyContext.Provider value={{ firstName, color, onChange: change }}>
+    <MyContext.Provider
+      value={{ firstName, lastName, color, lastNameColor, onChange: change }}
+    >
       <Row>
         <Col md='6'>
           <BlueBox />

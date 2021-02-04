@@ -1,6 +1,8 @@
 import React from 'react';
+import useTitle from '../common/useTitle';
 
-export default function Home() {
+export default function Home(props) {
+  useTitle('Accueil');
   return (
     <>
       <h1>Home page</h1>

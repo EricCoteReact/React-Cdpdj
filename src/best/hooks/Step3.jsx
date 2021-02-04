@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-//import Cat from '../Cat';
+import Cat from '../Cat';
 
 export default function ParentRoot() {
   return (
@@ -18,7 +18,9 @@ function MouseProvider(props) {
 
   return (
     <div style={{ height: '500px' }} onMouseMove={handleMouseMove}>
-      {React.cloneElement(props.children, { mouse: mouseState })}
+      {React.Children.map(props.children, (child) =>
+        React.cloneElement(child, { mouse: mouseState })
+      )}
     </div>
   );
 }

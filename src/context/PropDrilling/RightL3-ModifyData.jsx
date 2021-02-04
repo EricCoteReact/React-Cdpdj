@@ -12,6 +12,13 @@ export default function ModifyData(props) {
         className='mb-4'
       />
       <Input
+        value={props.lastName}
+        name='lastName'
+        placeholder='Last Name'
+        onChange={props.onChange}
+        className='mb-4'
+      />
+      <Input
         value={props.color}
         name='color'
         placeholder='Color'

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-//import Cat from '../Cat';
+import Cat from '../Cat';
 
 export default function ParentRoot() {
   return <DisplayMouse />;
@@ -17,6 +17,7 @@ function DisplayMouse() {
       <h1>
         The mouse position is: ({mouseState.x}, {mouseState.y})
       </h1>
+      <Cat mouse={mouseState} />
     </div>
   );
 }

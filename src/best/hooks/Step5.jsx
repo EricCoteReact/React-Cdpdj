@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
-//import Cat from '../Cat';
+import Cat from '../Cat';
 
 export default function ParentRoot() {
   return (
-    <MouseProvider>{(mouse) => <DisplayMouse mouse={mouse} />}</MouseProvider>
+    <MouseProvider
+      render={(mouse) => (
+        <>
+          <DisplayMouse mouse={mouse} />
+          <Cat mouse={mouse} />
+        </>
+      )}
+    />
   );
 }
 
@@ -16,7 +23,7 @@ function MouseProvider(props) {
 
   return (
     <div style={{ height: '500px' }} onMouseMove={handleMouseMove}>
-      {props.children(mouseState)}
+      {props.render(mouseState)}
     </div>
   );
 }

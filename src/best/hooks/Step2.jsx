@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-//import Cat from '../Cat';
+import Cat from '../Cat';
 
 export default function ParentRoot() {
   return <MouseProvider />;
@@ -15,6 +15,7 @@ function MouseProvider() {
   return (
     <div style={{ height: '500px' }} onMouseMove={handleMouseMove}>
       <DisplayMouse mouse={mouseState} />
+      <Cat mouse={mouseState} />
     </div>
   );
 }

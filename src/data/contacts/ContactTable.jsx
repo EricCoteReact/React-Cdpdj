@@ -28,9 +28,12 @@ const ContactTable = (props) => {
             </td>
             <td className='align-middle'>{contact.firstName}</td>
             <td className='align-middle'>{contact.lastName}</td>
-            <td className='align-middle'>contact.email</td>
+            <td className='align-middle'>{contact.email}</td>
             <td className='align-middle'>
-              <Button color="danger" onClick={() => alert("This has to be programmed")}>
+              <Button
+                color='danger'
+                onClick={() => props.onDeleteContact(contact.id)}
+              >
                 <FontAwesomeIcon icon={faTrashAlt} />
               </Button>
             </td>

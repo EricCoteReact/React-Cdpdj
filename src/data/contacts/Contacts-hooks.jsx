@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactApi from './contact-api/ContactApi';
+import ContactApi from './contact-api/ContactApi2';
 import ContactTable from './ContactTable';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
@@ -10,15 +10,17 @@ export default function Contacts() {
 
   React.useEffect(() => {
     refreshData();
-    //  if (ContactApi.subscribeChangeNotification) {
-    //    ContactApi.subscribeChangeNotification(refreshData)
-    //  }
+    if (ContactApi.subscribeChangeNotification) {
+      ContactApi.subscribeChangeNotification(refreshData);
+    }
 
-    // return ()=> {ContactApi.unsubscribeChangeNotification()}
+    return () => {
+      ContactApi.unsubscribeChangeNotification();
+    };
   }, []);
 
   // This is the old way of calling data
-  // eslint-disable-next-line 
+  // eslint-disable-next-line
   function refreshDataPromise() {
     ContactApi.getAllContacts()
       .then((data) => {
@@ -31,16 +33,20 @@ export default function Contacts() {
     try {
       let data = await ContactApi.getAllContacts();
       setContacts(data);
-    }
-    catch (err) {
+    } catch (err) {
       console.log(err);
     }
+  }
+
+  async function deleteContact(id) {
+    await ContactApi.deleteContact(id);
+    refreshData();
   }
 
   return (
     <>
       <h1>Contacts (using Hooks)</h1>
-      <ContactTable contacts={contacts} />
+      <ContactTable contacts={contacts} onDeleteContact={deleteContact} />
       <Link to='/data/details'>
         <Button color='primary'>Create Contact</Button>
       </Link>

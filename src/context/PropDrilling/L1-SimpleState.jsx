@@ -4,13 +4,15 @@ import GreyBox from './RightL2-GreyBox';
 import { Row, Col } from 'reactstrap';
 
 export default function SimpleState() {
+  // eslint-disable-next-line
   const [firstName, setFirstName] = useState('John');
+  // eslint-disable-next-line
+  const [lastName, setLastName] = useState('Wayne');
+  // eslint-disable-next-line
   const [color, setColor] = useState('blue');
 
   //the folloing is to avoid the ESLint warning that
   //we're not calling the "set" methods.
-  if ((setFirstName, setColor)) {
-  }
 
   function change(evt) {
     const { name, value } = evt.target;
@@ -25,10 +27,15 @@ export default function SimpleState() {
   return (
     <Row>
       <Col md='6'>
-        <BlueBox firstName={firstName} color={color} />
+        <BlueBox firstName={firstName} lastName={lastName} color={color} />
       </Col>
       <Col md='6'>
-        <GreyBox firstName={firstName} color={color} onChange={change} />
+        <GreyBox
+          firstName={firstName}
+          lastName={lastName}
+          color={color}
+          onChange={change}
+        />
       </Col>
     </Row>
   );
