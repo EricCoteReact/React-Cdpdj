@@ -76,8 +76,8 @@ export default function Menu() {
                 <DropdownItem tag={RRNavLink} to='/data/hooks'>
                   Contacts using hooks
                 </DropdownItem>
-                <DropdownItem tag={RRNavLink} to='/data/class'>
-                  Contacts using classes
+                <DropdownItem tag={RRNavLink} to='/data/form'>
+                  Contacts using React-hook-Form
                 </DropdownItem>
                 <DropdownItem tag={RRNavLink} to='/data/map'>
                   Map with pins

@@ -11,7 +11,9 @@ export function editTodo(id, newText) {
   return { type: 'todos/editTodos', payload: { id: id, text: newText } };
 }
 
-//add deleteTodo here
+export function deleteTodo(id) {
+  return { type: 'todos/deleteTodo', payload: id };
+}
 
 export function setFilter(text) {
   return { type: 'visibilityFilter/setStatus', payload: text };

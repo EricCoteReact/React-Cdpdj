@@ -15,6 +15,7 @@ export default function AddTodo({ onAddTodo }) {
           }
           onAddTodo(inputText.current.value);
           inputText.current.value = '';
+          inputText.current.focus();
         }}
       >
         <Input innerRef={inputText} className='mr-2' />

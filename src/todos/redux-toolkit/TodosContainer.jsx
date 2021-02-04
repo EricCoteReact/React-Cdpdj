@@ -6,14 +6,16 @@ import initialTodos from '../older-ways/common/initial-todos';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './slices/reducer';
+import logger from 'redux-logger';
 
+//store: Central location to keep state in Redux
 //dispatch: single function that schedules the changes: dispatch(action)
 //action: object that describes the changes we want to do to the state
 //  action.type: describes the type of change
 //  action.payload: data for the action
 //reducer: method scheduled by the dispatch. Takes two arguments:
 //  reducer(currentState, action) : returns the new state.
-//reducers have to use the state in an *immutable* way.
+//reducers have to use the state in an *immutable* way. (not anymore, because of immer)
 
 //actions exemples:
 //{type: 'todos/addTodo', payload: 'Buy Milk'}
@@ -27,6 +29,7 @@ export default function Todos() {
   if (!store.current) {
     store.current = configureStore({
       reducer: rootReducer,
+      middleware: [logger],
       preloadedState: { todos: initialTodos },
     });
   }

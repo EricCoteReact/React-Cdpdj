@@ -5,11 +5,11 @@ import TodoList from './TodoList';
 import initialTodos from '../older-ways/common/initial-todos';
 import { StatusFilters } from './StatusFilters';
 
-let currentId = 4;
+let currentId = initialTodos.length + 1;
 
 export default function Todos() {
   const [todos, setTodos] = useState(initialTodos);
-  const [visibilityFilter, setVisibilityFilter] = useState(StatusFilters.All); //"SHOW_COMPLETED", "SHOW_ACTIVE"
+  const [visibilityFilter, setVisibilityFilter] = useState(StatusFilters.All); //"all", "active", "completed"
 
   function toggleTodo(id) {
     setTodos(
@@ -28,6 +28,10 @@ export default function Todos() {
         completed: false,
       },
     ]);
+  }
+
+  function deleteTodo(id) {
+    setTodos(todos.filter((todo) => todo.id !== id));
   }
 
   function changeFilter(filter) {
@@ -58,9 +62,7 @@ export default function Todos() {
         todos={filteredTodos}
         visibilityFilter={visibilityFilter}
         onToggleTodo={toggleTodo}
-        onDeleteTodo={() => {
-          alert('To be programmed');
-        }}
+        onDeleteTodo={deleteTodo}
       />
     </div>
   );

@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import useInterval from './use-interval';
 import { Button } from 'reactstrap';
 import Day from './Day';
+
+const OptimizedButton = React.memo(Button);
 
 function getTime() {
   const options = {
@@ -41,17 +43,17 @@ export default function Clock() {
     isTimerRunning ? 1000 : null
   );
 
-  function timerToggler() {
+  const timerToggler = useCallback(function () {
     setTime(getTime());
     setIsTimerRunning(!isTimerRunning);
-  }
+  }, []);
 
-  //console.log('rerender');
+  console.log('new rerender');
   return (
     <div>
-      <Button color='primary' onClick={timerToggler}>
+      <OptimizedButton color='primary' onClick={timerToggler}>
         Toggle Clock
-      </Button>
+      </OptimizedButton>
       <h1>{currentTime}</h1>
       <Day day={getDay()} />
     </div>

@@ -9,6 +9,7 @@ import HooksCounterV3 from '../counter/hooks/counter-v3';
 import Covid from '../data/covid';
 import ContactsHooks from '../data/contacts/Contacts-hooks';
 import ContactsClass from '../data/contacts/Contacts-class';
+import ContactsForms from '../data/contacts/ContactsForms';
 import ContactDetails from '../data/contacts/contact-details/ContactDetails-hooks';
 import MapWithPins from '../data/maps/MapWithPins';
 import ContextDrill from '../context/PropDrilling/L1-SimpleState';
@@ -35,67 +36,69 @@ import Profile from '../security/Profile';
 import PasswordReset from '../security/PasswordReset';
 import SignOff from '../security/SignOff';
 import Lifecycle from '../lifecycle';
+import { Spinner } from 'reactstrap';
 
-import About from '../about';
+//import About from '../about';
+//const About = import('../about');
 
-//const About = React.lazy(() => import('./about'));
+const About = React.lazy(() => import('../about'));
 
 export default function MyRouting({ location }) {
   return (
     <>
-      {/* <React.Suspense fallback={<h1>Loading...</h1>}   > */}
-      <Switch location={location}>
-        <Route path='/' exact component={Home} />
-        <Route path='/about' component={About} />
-        <Route
-          path='/counter/classes'
-          render={() => <ClassesCounter init={5} />}
-        />
-        <Route
-          path='/counter/hooks-v1'
-          render={() => <HooksCounterV1 init={5} />}
-        />
-        <Route
-          path='/counter/hooks-v2'
-          render={() => <HooksCounterV2 init={5} />}
-        />
-        <Route
-          path='/counter/hooks-v3'
-          render={() => <HooksCounterV3 init={5} />}
-        />
-        <Route path='/lifecycle' component={Lifecycle} />
-        <Route path='/data/covid' component={Covid} />
-        <Route path='/data/hooks' component={ContactsHooks} />
-        <Route path='/data/class' component={ContactsClass} />
-        <Route path='/data/details/:id?' component={ContactDetails} />
-        <Route path='/data/map' component={MapWithPins} />
-        <Route path='/todos/ClassicState' component={TodosClassic} />
-        <Route path='/todos/ContextHooks' component={TodosContextHooks} />
-        <Route path='/todos/ReduxClassic' component={ReduxClassic} />
-        <Route path='/todos/ReduxHooks' component={ReduxHooks} />
-        <Route path='/todos/ToolkitClassic' component={ToolkitClassic} />
-        <Route path='/todos/ToolkitHooks' component={ToolkitHooks} />
-        <Route path='/reddits' component={Reddits} />
-        <Route path='/clock' component={Clock} />
-        <Route path='/context/PropDrill' component={ContextDrill} />
-        <Route path='/context/WithContext' component={ContextWith} />
-        <Route path='/context/containment' component={ContextContainment} />
-        <Route path='/context/reference' component={WithRef} />
-        <Route path='/best/step1' component={Step1} />
-        <Route path='/best/step2' component={Step2} />
-        <Route path='/best/step3' component={Step3} />
-        <Route path='/best/step4' component={Step4} />
-        <Route path='/best/step5' component={Step5} />
-        <Route path='/best/step6' component={Step6} />
-        <Route path='/auth/signup' component={SignUp} />
-        <Route path='/auth/signin' component={SignIn} />
-        <Route path='/auth/profile' component={Profile} />
-        <Route path='/auth/passwordreset' component={PasswordReset} />
-        <Route path='/auth/signoff' component={SignOff} />
+      <React.Suspense fallback={<Spinner color='danger' />}>
+        <Switch location={location}>
+          <Route path='/' exact component={Home} />
+          <Route path='/about' component={About} />
+          <Route
+            path='/counter/classes'
+            render={() => <ClassesCounter init={5} />}
+          />
+          <Route
+            path='/counter/hooks-v1'
+            render={() => <HooksCounterV1 init={5} />}
+          />
+          <Route
+            path='/counter/hooks-v2'
+            render={() => <HooksCounterV2 init={5} />}
+          />
+          <Route
+            path='/counter/hooks-v3'
+            render={() => <HooksCounterV3 init={5} />}
+          />
+          <Route path='/lifecycle' component={Lifecycle} />
+          <Route path='/data/covid' component={Covid} />
+          <Route path='/data/hooks' component={ContactsHooks} />
+          <Route path='/data/form' component={ContactsForms} />
+          <Route path='/data/details/:id?' component={ContactDetails} />
+          <Route path='/data/map' component={MapWithPins} />
+          <Route path='/todos/ClassicState' component={TodosClassic} />
+          <Route path='/todos/ContextHooks' component={TodosContextHooks} />
+          <Route path='/todos/ReduxClassic' component={ReduxClassic} />
+          <Route path='/todos/ReduxHooks' component={ReduxHooks} />
+          <Route path='/todos/ToolkitClassic' component={ToolkitClassic} />
+          <Route path='/todos/ToolkitHooks' component={ToolkitHooks} />
+          <Route path='/reddits' component={Reddits} />
+          <Route path='/clock' component={Clock} />
+          <Route path='/context/PropDrill' component={ContextDrill} />
+          <Route path='/context/WithContext' component={ContextWith} />
+          <Route path='/context/containment' component={ContextContainment} />
+          <Route path='/context/reference' component={WithRef} />
+          <Route path='/best/step1' component={Step1} />
+          <Route path='/best/step2' component={Step2} />
+          <Route path='/best/step3' component={Step3} />
+          <Route path='/best/step4' component={Step4} />
+          <Route path='/best/step5' component={Step5} />
+          <Route path='/best/step6' component={Step6} />
+          <Route path='/auth/signup' component={SignUp} />
+          <Route path='/auth/signin' component={SignIn} />
+          <Route path='/auth/profile' component={Profile} />
+          <Route path='/auth/passwordreset' component={PasswordReset} />
+          <Route path='/auth/signoff' component={SignOff} />
 
-        <Route component={NotFound} />
-      </Switch>
-      {/* </React.Suspense> */}
+          <Route component={NotFound} />
+        </Switch>
+      </React.Suspense>
     </>
   );
 }

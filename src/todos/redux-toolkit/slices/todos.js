@@ -17,6 +17,11 @@ const todos = createSlice({
       }
     },
 
+    deleteTodo: (todos, action) => {
+      const idx = todos.findIndex((todo) => todo.id === action.payload);
+      todos.splice(idx, 1);
+    },
+
     toggleTodo: (state, action) => {
       const todo = state.find((todo) => todo.id === action.payload);
       if (todo) {
@@ -28,4 +33,4 @@ const todos = createSlice({
 
 export default todos;
 
-export const { addTodo, editTodo, toggleTodo } = todos.actions;
+export const { addTodo, editTodo, toggleTodo, deleteTodo } = todos.actions;

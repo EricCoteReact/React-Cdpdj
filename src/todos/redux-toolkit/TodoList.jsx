@@ -2,7 +2,7 @@ import React from 'react';
 import TodoItem from './TodoItem';
 import { ListGroup } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleTodo, editTodo /*, deleteTodo */ } from './slices/todos';
+import { toggleTodo, editTodo, deleteTodo } from './slices/todos';
 import { StatusFilters } from './slices/visibility-filter';
 import { createSelector } from '@reduxjs/toolkit';
 
@@ -30,7 +30,7 @@ const TodoList = () => {
   const filteredTodos = useSelector(selectVisibleTodos);
 
   const onToggleTodo = (id) => dispatch(toggleTodo(id));
-  const onDeleteTodo = (id) => alert('To be implemented');
+  const onDeleteTodo = (id) => dispatch(deleteTodo(id));
   const onEditTodo = (id, newText) => dispatch(editTodo(id, newText));
 
   return (

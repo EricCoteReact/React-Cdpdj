@@ -8,6 +8,7 @@ import {
   toggleTodo,
   setFilter,
   StatusFilters,
+  deleteTodo,
 } from './StateManager/actions';
 import { todoReducer, filterReducer } from './StateManager/reducers';
 import TodoContext from './StateManager/todo-context';
@@ -55,11 +56,11 @@ export default function Todos() {
         visibilityFilter: visibilityFilter,
         onAddTodo: (text) => dispatchTodos(addTodo(text)),
         onToggleTodo: (id) => dispatchTodos(toggleTodo(id)),
-        onDeleteTodo: (id) => alert('to be completed ' + id),
+        onDeleteTodo: (id) => dispatchTodos(deleteTodo(id)),
         onChangeFilter: (text) => dispatchFilter(setFilter(text)),
       }}
     >
-      <h1>Todos (using state)</h1>
+      <h1>Todos (using context and reducers)</h1>
       <AddTodo />
       <FilterButtons />
       <TodoList />
