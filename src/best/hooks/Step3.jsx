@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Cat from '../Cat';
+//import Cat from '../Cat';
 
 export default function ParentRoot() {
   return (
